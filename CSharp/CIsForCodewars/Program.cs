@@ -6,12 +6,13 @@ public class Kata
     public static string GenerateC(int size)
     {
         Size = size;
-        // TODO: Implement the solution
-    string output = "";
-    output += lineOne(size);
+        string output = "";
+        int lineCount = calcLine();
+        foreach (int i in Enumerable.Range(0, lineCount)) {
+            
+        output += lineOne(size);
+    }
     
-    
-
         return output;
     }
 
@@ -23,6 +24,11 @@ public class Kata
         }
         return line;
     }
+
+    static int calcLine()
+    {
+        return 5 * Size;
+    }
 }
 
 class Program
@@ -32,6 +38,7 @@ class Program
         Console.WriteLine("Running simple test...\n");
 
         string result = "";
+    // @todo Add switch statment for size > 3 - to short circuit calculation if it will be too large.
         if (args.Length > 0)
         {
             int size = int.Parse(args[0]);
