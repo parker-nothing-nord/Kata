@@ -39,7 +39,7 @@ public class Kata
     }
     static string ShortLine() {
         string line = "";
-        for (int i = 0; i < 5 * Size; i++) {
+        for (int i = 0; i < Size; i++) {
             line += "C";
         }
         return line;
@@ -72,7 +72,7 @@ class Program
             Console.WriteLine("No argument provided, using default size of 1:\n");
             result = Kata.GenerateC(1);
         }
-        Console.WriteLine($"\n'{result}'");
+        Console.WriteLine($"\n{result}");
         Console.WriteLine("\nProgram finished.");
 
     }
