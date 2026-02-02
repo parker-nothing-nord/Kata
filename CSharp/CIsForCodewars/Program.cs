@@ -3,31 +3,53 @@
 public class Kata
 {
     public static int Size { get; set; }
+    public static int LineCount { get; set; }
+
+    public static int shortLineStartIndex { get; set; }
+    public static int ShortLineEndIndex { get; set; }
     public static string GenerateC(int size)
     {
         Size = size;
-        string output = "";
-        int lineCount = calcLine();
-        foreach (int i in Enumerable.Range(0, lineCount)) {
-            
-        output += lineOne(size);
-    }
+        CalcLineData();
+        string output = "\n";
+    
+        for (int i = 0; i < LineCount; i++) {
+            // Long lines then short lines, then long lines.
+            if (i < shortLineStartIndex || i > ShortLineEndIndex)
+            {
+                output += LongLine();
+            }
+            else
+            {
+                output += ShortLine();
+            }
+            output += "\n";
+        }
     
         return output;
     }
 
-
-    static string lineOne(int size) {
+    static string LongLine()
+    {
         string line = "";
-        for (int i = 0; i < 5 * size; i++) {
+        for (int i = 0; i < 5 * Size; i++) {
+            line += "C";
+        }
+        return line;
+    }
+    static string ShortLine() {
+        string line = "";
+        for (int i = 0; i < 5 * Size; i++) {
             line += "C";
         }
         return line;
     }
 
-    static int calcLine()
+    static void CalcLineData()
     {
-        return 5 * Size;
+        LineCount = 5 * Size;
+        shortLineStartIndex = Size;
+        ShortLineEndIndex = 4 * Size - 1;
     }
 }
 
