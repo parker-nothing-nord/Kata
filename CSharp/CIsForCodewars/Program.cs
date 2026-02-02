@@ -57,20 +57,39 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Running simple test...\n");
+        Console.WriteLine("Generating a C according to your size specifications...\n");
 
         string result = "";
     // @todo Add switch statment for size > 3 - to short circuit calculation if it will be too large.
-        if (args.Length > 0)
-        {
-            int size = int.Parse(args[0]);
-            Console.WriteLine($"Testing with size = {size}:\n");
-            result = Kata.GenerateC(size);
+    // Get value of arg 0
+        int size = 0;
+
+        switch (args.Length) {
+            case 0:
+                Console.WriteLine("No argument provided, using default size of 1:\n");
+                size = 1;
+                break;
+            case 1:
+                size = int.Parse(args[0]);
+                break;
+            default:
+                Console.WriteLine("Too many arguments provided. Please only use the size of the C to generate. \n");
+                Environment.Exit(1);
+                break;
         }
-        else
+
+        switch (size)
         {
-            Console.WriteLine("No argument provided, using default size of 1:\n");
-            result = Kata.GenerateC(1);
+            case 0:
+                Console.WriteLine("Using default size of 1:\n");
+                result = Kata.GenerateC(1);
+                break;
+            case >10:
+                Console.WriteLine("We are here to print a C, not an ocean! Please provide a size less than 10.\n");
+                break;
+            default:
+                result = Kata.GenerateC(size);
+                break;
         }
         Console.WriteLine($"\n{result}");
         Console.WriteLine("\nProgram finished.");
