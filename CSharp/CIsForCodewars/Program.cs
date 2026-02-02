@@ -68,6 +68,13 @@ class Program
                 size = 1;
                 break;
             case 1:
+            if (int.TryParse(args[0], out size)) {
+                    Console.WriteLine($"Using size of {size}:\n");
+                } else {
+                    Console.WriteLine("Invalid size provided. Please provide a valid integer.\n");
+                    Environment.Exit(1);
+                }
+                
                 size = int.Parse(args[0]);
                 break;
             default:
