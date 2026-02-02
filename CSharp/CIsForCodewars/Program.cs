@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Kata
+public class CisForCodeWars
 {
     public static int Size { get; set; }
     public static int LineCount { get; set; }
@@ -87,13 +87,13 @@ class Program
         {
             case 0:
                 Console.WriteLine("Using default size of 1:\n");
-                result = Kata.GenerateC(1);
+                result = CisForCodeWars.GenerateC(1);
                 break;
             case >10:
                 Console.WriteLine("We are here to print a C, not an ocean! Please provide a size less than 10.\n");
                 break;
             default:
-                result = Kata.GenerateC(size);
+                result = CisForCodeWars.GenerateC(size);
                 break;
         }
         Console.WriteLine($"\n{result}");
