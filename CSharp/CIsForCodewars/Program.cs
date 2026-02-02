@@ -60,8 +60,6 @@ class Program
         Console.WriteLine("Generating a C according to your size specifications...\n");
 
         string result = "";
-    // @todo Add switch statment for size > 3 - to short circuit calculation if it will be too large.
-    // Get value of arg 0
         int size = 0;
 
         switch (args.Length) {
