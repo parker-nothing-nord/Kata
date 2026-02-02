@@ -5,23 +5,58 @@ public class Kata
 {
     public static string Likes(string[] names)
     {
-        // TODO: Implement the solution
-        // Return the appropriate text based on the number of people who like the item
-        switch (names.Length)
+     
+        // return SolutionOne(names);
+        return SolutionTwo(names);
+        throw new NotImplementedException();
+
+
+        /**
+        * Set out patterns, then set array against pattern. Scalable.
+        */
+        static string SolutionTwo(string[] names)
         {
-            case 0:
-                return "no one likes this";
-            case 1:
-                return $"{names[0]} likes this";
-            case 2:
-                return $"{names[0]} and {names[1]} like this";
-            case 3:
-                return $"{names[0]}, {names[1]} and {names[2]} like this";
-            default:
-                return $"{names[0]}, {names[1]} and {names.Length - 2} others like this";
+            string pattern = "";
+            // Short circuit if 'others' calculation needed.
+            if (names.Length >= 4)
+            {
+                int othersCount = names.Length - 2;
+                pattern = "{0}, {1} and {2} others like this";
+                names = [names[0], names[1], othersCount.ToString()];
+            }
+            else
+            {
+            string[] patterns = [
+                "no one likes this",
+                "{0} likes this",
+                "{0} and {1} like this",
+                "{0}, {1} and {2} like this",
+            ];
+
+            pattern = patterns[Math.Min(names.Length, 4)];
+            }
+            return string.Format(pattern, names);
         }
 
-        throw new NotImplementedException();
+        /**
+         * Flat switch and replace.Intuitive.
+         */
+        static string SolutionOne(string[] names)
+        {   
+            switch (names.Length)
+            {
+                case 0:
+                    return "no one likes this";
+                case 1:
+                    return $"{names[0]} likes this";
+                case 2:
+                    return $"{names[0]} and {names[1]} like this";
+                case 3:
+                    return $"{names[0]}, {names[1]} and {names[2]} like this";
+                default:
+                    return $"{names[0]}, {names[1]} and {names.Length - 2} others like this";
+            }
+        }
     }
 }
 
