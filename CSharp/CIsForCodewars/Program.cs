@@ -2,9 +2,10 @@
 
 public class Kata
 {
-    int size;
+    public static int Size { get; set; }
     public static string GenerateC(int size)
     {
+        Size = size;
         // TODO: Implement the solution
     string output = "";
     output += lineOne(size);
@@ -30,25 +31,20 @@ class Program
     {
         Console.WriteLine("Running simple test...\n");
 
-        string result = Kata.GenerateC(1);
+        string result = "";
         if (args.Length > 0)
         {
             int size = int.Parse(args[0]);
+            Console.WriteLine($"Testing with size = {size}:\n");
             result = Kata.GenerateC(size);
         }
         else
         {
-            Console.WriteLine("No argument provided, using default size of 1");
+            Console.WriteLine("No argument provided, using default size of 1:\n");
             result = Kata.GenerateC(1);
         }
-        
-        Console.WriteLine($"GenerateC(1) returned: \n'{result}'");
-        Console.WriteLine("\nExpected:");
-        Console.WriteLine("CCCCC");
-        Console.WriteLine("C");
-        Console.WriteLine("C");
-        Console.WriteLine("C");
-        Console.WriteLine("CCCCC");
+        Console.WriteLine($"\n'{result}'");
+        Console.WriteLine("\nProgram finished.");
 
     }
 }
