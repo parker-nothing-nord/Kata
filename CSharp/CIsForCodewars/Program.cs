@@ -1,7 +1,7 @@
 ﻿using System;
 
-public class CisForCodeWars
-{
+public class CisforCodewars {
+   
     public static int Size { get; set; }
     public static int LineCount { get; set; }
 
@@ -11,7 +11,7 @@ public class CisForCodeWars
     {
         Size = size;
         CalcLineData();
-        string output = "\n";
+        string output = "";
     
         for (int i = 0; i < LineCount; i++) {
             // Long lines then short lines, then long lines.
@@ -22,6 +22,9 @@ public class CisForCodeWars
             else
             {
                 output += ShortLine();
+            }
+            if (i == LineCount -1) {
+              continue;
             }
             output += "\n";
         }
@@ -87,13 +90,13 @@ class Program
         {
             case 0:
                 Console.WriteLine("Using default size of 1:\n");
-                result = CisForCodeWars.GenerateC(1);
+                result = CisforCodewars.GenerateC(1);
                 break;
             case >10:
                 Console.WriteLine("We are here to print a C, not an ocean! Please provide a size less than 10.\n");
                 break;
             default:
-                result = CisForCodeWars.GenerateC(size);
+                result = CisforCodewars.GenerateC(size);
                 break;
         }
         Console.WriteLine($"\n{result}");
