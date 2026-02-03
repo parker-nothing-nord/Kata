@@ -2,11 +2,6 @@
 
 public class CisforCodewars {
    
-    public static int Size { get; set; }
-    public static int LineCount { get; set; }
-
-    public static int shortLineStartIndex { get; set; }
-    public static int ShortLineEndIndex { get; set; }
     public static string GenerateC(int size)
     {
       string output = "";
