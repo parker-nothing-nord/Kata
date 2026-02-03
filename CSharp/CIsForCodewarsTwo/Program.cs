@@ -9,50 +9,17 @@ public class CisforCodewars {
     public static int ShortLineEndIndex { get; set; }
     public static string GenerateC(int size)
     {
-        Size = size;
-        CalcLineData();
-        string output = "";
-    
-        for (int i = 0; i < LineCount; i++) {
-            // Long lines then short lines, then long lines.
-            if (i < shortLineStartIndex || i > ShortLineEndIndex)
-            {
-                output += LongLine();
-            }
-            else
-            {
-                output += ShortLine();
-            }
-            if (i == LineCount -1) {
-              continue;
-            }
-            output += "\n";
-        }
-    
-        return output;
-    }
-
-    static string LongLine()
-    {
-        string line = "";
-        for (int i = 0; i < 5 * Size; i++) {
-            line += "C";
-        }
-        return line;
-    }
-    static string ShortLine() {
-        string line = "";
-        for (int i = 0; i < Size; i++) {
-            line += "C";
-        }
-        return line;
-    }
-
-    static void CalcLineData()
-    {
-        LineCount = 5 * Size;
-        shortLineStartIndex = Size;
-        ShortLineEndIndex = 4 * Size - 1;
+      string output = "";
+      string longLine = new String('C', size * 5);
+      string shortLine = new string('C', size);
+      longLine += "\n";
+      shortLine += "\n";
+      output += string.Concat(Enumerable.Repeat(longLine, size));
+      output += string.Concat(Enumerable.Repeat(shortLine, size * 3));
+      output += string.Concat(Enumerable.Repeat(longLine, size));
+      output = output.TrimEnd('\n');
+      
+      return output;
     }
 }
 
