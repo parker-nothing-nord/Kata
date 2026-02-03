@@ -65,40 +65,4 @@ class Program
         Console.WriteLine("\nProgram finished.");
 
     }
-
-    public class AlternateSoulution {
-   
-    public static string GenerateC(int size)
-    {
-   
-        string output = "";
-        string line = "";
-        for (int i = 0; i < 5 * size; i++) {
-          line = "";
-            if (i < size || i > 4 * size -1)
-            {      
-               // Long line
-               for (int l = 0; l < 5 * size; l++) {
-               line += "C";
-               }
-            }  
-            else
-            {
-              // Short line.
-                for (int l = 0; l < size; l++) {
-                   line += "C";
-                } 
-            }
-            output += line;
-            if (i == 5 * size -1) {
-              continue;
-            }
-            
-            output += "\n";
-        }
-    
-        return output;
-    }
-
-}
 }
